@@ -1,13 +1,14 @@
 ################################################################802.11 in Grid topology with cross folw
 set cbr_size 64 ; #[lindex $argv 2]; #4,8,16,32,64
 set cbr_rate 11.0Mb
-set cbr_pckt_per_sec 500
+set cbr_pckt_per_sec [lindex $argv 3]
 set cbr_interval [expr 1.0/$cbr_pckt_per_sec] ;# ?????? 1 for 1 packets per second and 0.1 for 10 packets per second
 #set cbr_interval 0.00005 ; #[expr 1/[lindex $argv 2]] ;# ?????? 1 for 1 packets per second and 0.1 for 10 packets per second
 set num_row [lindex $argv 0] ;#number of row
-set num_col [lindex $argv 0] ;#number of column
-set x_dim 150 ; #[lindex $argv 1]
-set y_dim 150 ; #[lindex $argv 1]
+set num_col [lindex $argv 1] ;#number of column
+set coverage_multiplier [lindex $argv 4]
+set x_dim [expr $coverage_multiplier*150] ; #[lindex $argv 1]
+set y_dim [expr $coverage_multiplier*150] ; #[lindex $argv 1]
 set time_duration 25 ; #[lindex $argv 5] ;#50
 set start_time 50 ;#100
 set parallel_start_gap 0.0
@@ -37,7 +38,7 @@ Mac/802_11 set dataRate_ 11Mb
 #CHNG
 set num_parallel_flow 0 ;#[lindex $argv 0]	# along column
 set num_cross_flow 0 ;#[lindex $argv 0]		#along row
-set num_random_flow 0
+set num_random_flow [lindex $argv 2]
 set num_sink_flow [expr $num_row*$num_col] ;#sink
 set sink_node 100 ;#sink id, dummy here; updated next
 

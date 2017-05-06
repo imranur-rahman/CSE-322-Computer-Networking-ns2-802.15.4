@@ -38,7 +38,7 @@ echo "                             EXECUTING $(($i+1)) th ITERATION"
 
 
 #                            CHNG PATH		1		######################################################
-ns 802_11_udp.tcl $r # $dist_11 $pckt_size $pckt_per_sec $routing $time_sim
+ns 802_11_udp.tcl $r $r 2 500 5 # $dist_11 $pckt_size $pckt_per_sec $routing $time_sim
 echo "SIMULATION COMPLETE. BUILDING STAT......"
 #awk -f rule_th_del_enr_tcp.awk 802_11_grid_tcp_with_energy_random_traffic.tr > math_model1.out
 #                            CHNG PATH		2		######################################################

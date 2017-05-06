@@ -1,8 +1,10 @@
-SINK NODE 4 : at 150 150 
-0 x: 92 y: 99 
-1 x: 88 y: 137 
-2 x: 55 y: 56 
-3 x: 60 y: 116 
+SINK NODE 4 : at 750 750 
+0 x: 703 y: 510 
+1 x: 390 y: 420 
+2 x: 128 y: 399 
+3 x: 361 y: 548 
+RANDOM:  Src: 0 Dest: 1
+RANDOM:  Src: 3 Dest: 1
 SINK:  Src: 0 Dest: 4
 SINK:  Src: 1 Dest: 4
 SINK:  Src: 2 Dest: 4

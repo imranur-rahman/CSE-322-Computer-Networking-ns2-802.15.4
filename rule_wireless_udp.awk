@@ -49,7 +49,7 @@ BEGIN {
 	sub(/_*$/, "", node);
 
 	if (energy == "[energy") {
-		energy_consumption[node] = (idle_energy_consumption + sleep_energy_consumption + transmit_energy_consumption + receive_energy_consumption);
+		energy_consumption[node] += (idle_energy_consumption + sleep_energy_consumption + transmit_energy_consumption + receive_energy_consumption);
 #		printf("%d %15.5f\n", node, energy_consumption[node]);
 	}
 
@@ -58,7 +58,7 @@ BEGIN {
 		temp+=1;
 	}
 
-	if ( strAgt == "AGT"   &&   strType == "cbr") {
+	if (strType == "cbr") {
 		if (idPacket > idHighestPacket) idHighestPacket = idPacket;
 		if (idPacket < idLowestPacket) idLowestPacket = idPacket;
 
