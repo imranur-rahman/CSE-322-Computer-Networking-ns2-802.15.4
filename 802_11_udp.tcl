@@ -7,14 +7,25 @@ set cbr_interval [expr 1.0/$cbr_pckt_per_sec] ;# ?????? 1 for 1 packets per seco
 set num_row [lindex $argv 0] ;#number of row
 set num_col [lindex $argv 1] ;#number of column
 set coverage_multiplier [lindex $argv 4]
-set x_dim [expr $coverage_multiplier*150] ; #[lindex $argv 1]
-set y_dim [expr $coverage_multiplier*150] ; #[lindex $argv 1]
+set x_dim [expr $coverage_multiplier*40] ; #[lindex $argv 1]
+set y_dim [expr $coverage_multiplier*40] ; #[lindex $argv 1]
 set time_duration 25 ; #[lindex $argv 5] ;#50
 set start_time 50 ;#100
 set parallel_start_gap 0.0
 set cross_start_gap 0.0
 
 #############################################################ENERGY PARAMETERS
+set val(energymodel_15_4)    EnergyModel     ;
+set val(initialenergy_15_4)  1000            ;# Initial energy in Joules
+
+set val(idlepower_15_4) 56.4e-3		;#LEAP	(active power in spec)
+set val(rxpower_15_4) 59.1e-3			;#LEAP
+set val(txpower_15_4) 52.2e-3			;#LEAP
+set val(sleeppower_15_4) 0.6e-3		;#LEAP
+set val(transitionpower_15_4) 35.708e-3		;#LEAP: 
+set val(transitiontime_15_4) 2.4e-3		;#LEAP
+
+
 set val(energymodel_11)    EnergyModel     ;
 set val(initialenergy_11)  1000            ;# Initial energy in Joules
 
@@ -33,13 +44,13 @@ set val(transitiontime_11) 2.36			;#LEAP (802.11g)
 #set val(transitiontime_11) 3			;#Stargate (802.11b)
 
 #puts "$MAC/802_11.dataRate_"
-Mac/802_11 set dataRate_ 11Mb
+Mac/802_15_4 set dataRate_ 11Mb
 
 #CHNG
 set num_parallel_flow 0 ;#[lindex $argv 0]	# along column
 set num_cross_flow 0 ;#[lindex $argv 0]		#along row
 set num_random_flow [lindex $argv 2]
-set num_sink_flow [expr $num_row*$num_col] ;#sink
+set num_sink_flow 0; # [expr $num_row*$num_col] ;#sink
 set sink_node 100 ;#sink id, dummy here; updated next
 
 set grid 0;#0->random, 1->not random
@@ -71,18 +82,18 @@ set tcp_sink Agent/Null
 set val(chan) Channel/WirelessChannel ;# channel type
 set val(prop) Propagation/TwoRayGround ;# radio-propagation model
 #set val(prop) Propagation/FreeSpace ;# radio-propagation model
-set val(netif) Phy/WirelessPhy ;# network interface type
-set val(mac) Mac/802_11 ;# MAC type
+set val(netif) Phy/WirelessPhy/802_15_4 ;# network interface type
+set val(mac) Mac/802_15_4 ;# MAC type
 #set val(mac) SMac/802_15_4 ;# MAC type
 set val(ifq) Queue/DropTail/PriQueue ;# interface queue type
 set val(ll) LL ;# link layer type
 set val(ant) Antenna/OmniAntenna ;# antenna model
 set val(ifqlen) 50 ;# max packet in ifq
-set val(rp) DSDV ; #[lindex $argv 4] ;# routing protocol
+set val(rp) AODV ; #[lindex $argv 4] ;# routing protocol
 
-Mac/802_11 set syncFlag_ 1
+Mac/802_15_4 set syncFlag_ 1
 
-Mac/802_11 set dutyCycle_ cbr_interval
+Mac/802_15_4 set dutyCycle_ cbr_interval
 
 set nm 802_11_udp.nam
 set tr 802_11_udp.tr
@@ -104,6 +115,29 @@ $ns_ namtrace-all-wireless $namtrace $x_dim $y_dim
 
 #set topofilename "topo_ex3.txt"
 set topofile [open $topo_file "w"]
+
+
+
+set dist(5m)  7.69113e-06
+set dist(9m)  2.37381e-06
+set dist(10m) 1.92278e-06
+set dist(11m) 1.58908e-06
+set dist(12m) 1.33527e-06
+set dist(13m) 1.13774e-06
+set dist(14m) 9.81011e-07
+set dist(15m) 8.54570e-07
+set dist(16m) 7.51087e-07
+set dist(20m) 4.80696e-07
+set dist(25m) 3.07645e-07
+set dist(30m) 2.13643e-07
+set dist(35m) 1.56962e-07
+set dist(40m) 1.20174e-07
+# Phy/WirelessPhy/802_15_4 set CSThresh_ $dist(40m)
+# Phy/WirelessPhy/802_15_4 set RXThresh_ $dist(40m)
+Phy/WirelessPhy/802_15_4 set TXThresh_ $dist(40m)
+
+
+
 
 # set up topography object
 set topo       [new Topography]
@@ -133,14 +167,14 @@ $ns_ node-config -adhocRouting $val(rp) -llType $val(ll) \
      -agentTrace ON -routerTrace OFF\
      -macTrace ON \
      -movementTrace OFF \
-			 -energyModel $val(energymodel_11) \
-			 -idlePower $val(idlepower_11) \
-			 -rxPower $val(rxpower_11) \
-			 -txPower $val(txpower_11) \
-          		 -sleepPower $val(sleeppower_11) \
-          		 -transitionPower $val(transitionpower_11) \
-			 -transitionTime $val(transitiontime_11) \
-			 -initialEnergy $val(initialenergy_11)
+			 -energyModel $val(energymodel_15_4) \
+			 -idlePower $val(idlepower_15_4) \
+			 -rxPower $val(rxpower_15_4) \
+			 -txPower $val(txpower_15_4) \
+          		 -sleepPower $val(sleeppower_15_4) \
+          		 -transitionPower $val(transitionpower_15_4) \
+			 -transitionTime $val(transitiontime_15_4) \
+			 -initialEnergy $val(initialenergy_15_4)
 
 
 #          		 -transitionTime 0.005 \
