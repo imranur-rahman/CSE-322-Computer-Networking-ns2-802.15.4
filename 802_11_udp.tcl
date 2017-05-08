@@ -9,8 +9,8 @@ set num_col [lindex $argv 1] ;#number of column
 set coverage_multiplier [lindex $argv 4]
 set x_dim [expr $coverage_multiplier*40] ; #[lindex $argv 1]
 set y_dim [expr $coverage_multiplier*40] ; #[lindex $argv 1]
-set time_duration 25 ; #[lindex $argv 5] ;#50
-set start_time 50 ;#100
+set time_duration 5 ; #[lindex $argv 5] ;#50
+set start_time 10 ;#100
 set parallel_start_gap 0.0
 set cross_start_gap 0.0
 
