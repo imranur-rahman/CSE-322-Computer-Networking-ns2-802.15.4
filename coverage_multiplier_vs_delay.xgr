@@ -1,9 +1,9 @@
 YUnitText: Delay
-XUnitText: Num of Nodes
+XUnitText: Coverage_multiplier
 ""
 0 0.0
 1 0.004301
-2 0.004299
-3 0.004301
+2 0.004301
+3 0.004298
 4 0.004301
-5 0.004301
+5 0.004300

@@ -1,9 +1,9 @@
 YUnitText: Delivery Ratio
-XUnitText: Num of Nodes
+XUnitText: Coverage_multiplier
 ""
 0 0.0
-1 18.295709
-2 2.569649
-3 12.779234
-4 18.223028
-5 29.812472
+1 16.114615
+2 13.800807
+3 0.886361
+4 18.867359
+5 1.571268

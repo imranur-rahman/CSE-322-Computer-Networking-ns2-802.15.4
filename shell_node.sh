@@ -1,7 +1,7 @@
 #!/bin/bash
 
-node_start=20;
-node_end=60;
+node_start=10;
+node_end=100;
 
 flow_start=10;
 flow_end=50;

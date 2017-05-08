@@ -1,9 +1,9 @@
 YUnitText: Drop Ratio
-XUnitText: Num of Nodes
+XUnitText: Coverage_multiplier
 ""
 0 0.0
-1 78.672154
-2 93.510324
-3 84.281792
-4 78.736778
-5 67.662675
+1 80.499602
+2 83.350915
+3 95.283768
+4 77.641130
+5 95.114544

@@ -1,9 +1,9 @@
 YUnitText: Delay
-XUnitText: Num of Nodes
+XUnitText: Num of Pckt_per_sec
 ""
 0 0.0
 100 0.004301
 200 0.004301
-300 0.004300
+300 0.004301
 400 0.004301
-500 0.000000
+500 0.004301

@@ -1,9 +1,9 @@
 YUnitText: Delivery Ratio
-XUnitText: Num of Nodes
+XUnitText: Num of Pckt_per_sec
 ""
 0 0.0
-100 18.362283
-200 16.913513
-300 5.661963
-400 9.032628
-500 0.000000
+100 16.765298
+200 3.641237
+300 0.941874
+400 3.671046
+500 7.064177

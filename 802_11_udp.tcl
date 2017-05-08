@@ -53,7 +53,7 @@ set num_random_flow [lindex $argv 2]
 set num_sink_flow 0; # [expr $num_row*$num_col] ;#sink
 set sink_node 100 ;#sink id, dummy here; updated next
 
-set grid 0;#0->random, 1->not random
+set grid 1;#0->random, 1->not random
 set extra_time 10 ;#10
 
 #set tcp_src Agent/TCP/Vegas ;# Agent/TCP or Agent/TCP/Reno or Agent/TCP/Newreno or Agent/TCP/FullTcp/Sack or Agent/TCP/Vegas
